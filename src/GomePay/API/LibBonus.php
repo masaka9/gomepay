@@ -14,6 +14,7 @@ class LibBonus
 {
     /**
      * 获取签名数据
+     * @param string $bonuse_key
      * @param array $params
      * @return string
      */

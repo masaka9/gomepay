@@ -113,7 +113,11 @@ class M2Base
         if (!empty ($this->sign_arr ['data_sign'])) {
             $sign_arr ['data_sign'] = $this->sign_arr ['data_sign'];
         }
-        usort($sign_arr, 'nextpermu');
+        usort($sign_arr, function ($a, $b) {
+            if (strcmp($a, $b) == 0)
+                return 0;
+            return strcmp($a, $b) > 0 ? 1 : -1;
+        });
         $sign_str = sha1(implode('', $sign_arr));
         $this->sign_arr = array();
 
@@ -416,14 +420,4 @@ class M2Base
         //返回数据
         return $output;
     }
-}
-
-/*
- * 对数组进行自定义排序
- */
-function nextpermu($a, $b)
-{
-    if (strcmp($a, $b) == 0)
-        return 0;
-    return strcmp($a, $b) > 0 ? 1 : -1;
 }
