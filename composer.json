@@ -3,7 +3,7 @@
     "description": "gomepay composer package",
     "keywords": ["GomePay", "masaka9"],
     "type": "library",
-    "minimum-stability": "0.0.2",
+    "minimum-stability": "dev",
     "homepage": "https://github.com/masaka9/gomepay/",
     "license": "BSD",
     "require": {
