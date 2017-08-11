@@ -48,7 +48,11 @@ class Config
                                 $app_code, $app_version, $service_code, $plat_form)
     {
         $this->tid = '';
-        $this->api_id = ['DP_SERVICE' => 'epay_api_deal@agent_for_paying', 'login_token' => 'epay_api_security@company_login'];
+        $this->api_id = [
+            'BANK_INFO' => 'epay_api_common@get_bank_id',
+            'DP_SERVICE' => 'epay_api_deal@agent_for_paying',
+            'login_token' => 'epay_api_security@company_login'
+        ];
         $this->api_server_code = '';
         $this->debug = false;
         $this->url = 'https://api.gomepay.com/CoreServlet';
@@ -105,9 +109,18 @@ class Config
         ];
     }
 
-    public function agent_pay_data($order_number, $pay_password, $customer_name, $account_number, $amount, $req_no, $async_notification_addr)
+    public function agent_pay_data($req_no, $order_number, $pay_password, $customer_name, $account_number, $amount, $async_notification_addr)
     {
         return [
+            // 全局参数
+            'app_code' => $this->app_code,
+            'app_version' => $this->app_version,
+            'service_code' => $this->service_code,
+            'plat_form' => $this->plat_form,
+            // 请求协议
+            'login_token' => '',
+            'req_no' => $req_no,
+            // 接口参数
             'merchant_number' => $this->bonuse_merchno,
             'order_number' => $order_number,
             'wallet_id' => $this->wallet_id,
@@ -120,16 +133,76 @@ class Config
             'account_number' => $account_number,
             'currency' => $this->currency,
             'amount' => $amount,
+            'async_notification_addr' => $async_notification_addr,
             'asset_type_code' => $this->asset_type_code,
-            'account_type_code' => $this->account_type_code,
+            'account_type_code' => $this->account_type_code
+        ];
+    }
 
+    public function bank_list_data($req_no)
+    {
+        return [
+            // 全局参数
             'app_code' => $this->app_code,
             'app_version' => $this->app_version,
             'service_code' => $this->service_code,
             'plat_form' => $this->plat_form,
+            // 请求协议
             'login_token' => '',
             'req_no' => $req_no,
-            'async_notification_addr' => $async_notification_addr
+            // 接口参数
+            'scene' => '01'
+        ];
+    }
+
+    public function bank_province_list_data($req_no)
+    {
+        return [
+            // 全局参数
+            'app_code' => $this->app_code,
+            'app_version' => $this->app_version,
+            'service_code' => $this->service_code,
+            'plat_form' => $this->plat_form,
+            // 请求协议
+            'login_token' => '',
+            'req_no' => $req_no,
+            // 接口参数
+            'scene' => '02'
+        ];
+    }
+
+    public function bank_city_list_data($req_no, $province_code)
+    {
+        return [
+            // 全局参数
+            'app_code' => $this->app_code,
+            'app_version' => $this->app_version,
+            'service_code' => $this->service_code,
+            'plat_form' => $this->plat_form,
+            // 请求协议
+            'login_token' => '',
+            'req_no' => $req_no,
+            // 接口参数
+            'scene' => '03',
+            'province_code' => $province_code
+        ];
+    }
+
+    public function bank_subbranch_list_data($req_no, $city_code, $bank_id)
+    {
+        return [
+            // 全局参数
+            'app_code' => $this->app_code,
+            'app_version' => $this->app_version,
+            'service_code' => $this->service_code,
+            'plat_form' => $this->plat_form,
+            // 请求协议
+            'login_token' => '',
+            'req_no' => $req_no,
+            // 接口参数
+            'scene' => '04',
+            'city_code' => $city_code,
+            'bank_id' => $bank_id
         ];
     }
 

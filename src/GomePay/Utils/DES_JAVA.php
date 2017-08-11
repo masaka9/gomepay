@@ -27,7 +27,6 @@ class DES_JAVA
 
     public function decrypt($decrypt)
     {
-        // $decoded = base64_decode($decrypt);
         $decoded = pack("H*", $decrypt);
         $iv = mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_DES, MCRYPT_MODE_ECB), MCRYPT_RAND);
         $decrypted = mcrypt_decrypt(MCRYPT_DES, $this->key, $decoded, MCRYPT_MODE_ECB, $iv);
