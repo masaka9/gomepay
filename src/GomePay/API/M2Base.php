@@ -3,12 +3,13 @@
  * Created by PhpStorm.
  * User: masaka9
  * Date: 2017/8/11
- * Time: 下午12:28
+ * Time: 下午12:37
  */
 
-namespace GomePay;
+namespace GomePay\API;
 
-class Config
+
+class M2Base
 {
 
 }
