@@ -96,12 +96,12 @@ class LibBonus
 
     /**
      * 获取m2传输需要的数据
+     * @param string $bonuse_key
      * @param array $params
      * @return string json
      */
     public function get_params($bonuse_key, $params)
     {
-
         $dstbdatasign = $this->get_dstbdatasign($bonuse_key, $params);
 
         $params ['dstbdatasign'] = $dstbdatasign;
