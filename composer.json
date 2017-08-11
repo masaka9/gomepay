@@ -1,0 +1,16 @@
+{
+    "name": "masaka9/gomepay",
+    "description": "gomepay composer package",
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "license": "BSD",
+    "authors": [
+        {
+            "name": "masaka9",
+            "email": "masaka9@aliyun.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
