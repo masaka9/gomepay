@@ -1,16 +1,21 @@
 {
     "name": "masaka9/gomepay",
     "description": "gomepay composer package",
+    "keywords": ["GomePay", "masaka9"],
     "type": "library",
+    "minimum-stability": "stable",
+    "homepage": "https://github.com/masaka9/gomepay/",
+    "license": "BSD",
     "require": {
         "guzzlehttp/guzzle": "^6.3"
     },
-    "license": "BSD",
+    "autoload": {
+        "psr-4": { "GomePay\\": "src/GomePay/" }
+    },
     "authors": [
         {
             "name": "masaka9",
             "email": "masaka9@aliyun.com"
         }
-    ],
-    "minimum-stability": "stable"
+    ]
 }
