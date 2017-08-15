@@ -54,8 +54,9 @@ class M2Base
         if ($this->is_json($data)) {
             $data_result = json_decode($data, true);
             if ($data_result['op_ret_code'] == '000') {
-                var_dump($data_result);
-                return $data_result ['data'];
+//                var_dump($data_result);
+//                return $data_result ['data'];
+                return true;
             } else {
                 $result = '错误:' . $data_result ['op_err_msg'] . ",错误详情:" . $data_result ['op_err_obj'];
             }
